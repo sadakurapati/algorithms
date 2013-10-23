@@ -23,6 +23,8 @@
  */
 package com.sada.algorithms;
 
+import java.util.Arrays;
+
 /**
  * I implement the Insertion sorting algorithm. Time complexity: O(n^2)
  *
@@ -34,11 +36,9 @@ public class InsertionSort {
   public static void main(String args[]) {
     int input[];
     input = new int[]{5, 3, 8, 44, 23, 64, 225, 24, 63};
-    System.out.println("Before sorting: ");
-    print(input);
+    System.out.printf("Before sorting: %s \n", Arrays.toString(input));
     sort(input);
-    System.out.println("After sorting: ");
-    print(input);
+    System.out.printf("After sorting: %s \n", Arrays.toString(input));
   }
 
   //I sort the given numbers in ascending order using Insertion sort algorithm.
@@ -61,13 +61,6 @@ public class InsertionSort {
        * and hope now you got me why we are inserting it at nums[j+1].
        */
       nums[j + 1] = key;
-    }
-  }
-
-  //to pring elemtns in array.
-  private static void print(int[] nums) {
-    for (int n : nums) {
-      System.out.printf("%d ", n);
     }
   }
 }

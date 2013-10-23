@@ -23,6 +23,8 @@
  */
 package com.sada.algorithms;
 
+import java.util.Arrays;
+
 /**
  * I implement the Merge sort algorithm - Divide and Concur. Time complexity:
  * O(n log n)
@@ -35,12 +37,9 @@ public class MergeSort {
   public static void main(String args[]) {
     int input[];
     input = new int[]{6, 3, 2, 5, 7, 4, 8, 1};
-    System.out.print("Before sorting: ");
-    print(input);
+    System.out.printf("Before sorting: %s \n", Arrays.toString(input));
     sort(input, 0, input.length - 1);
-    System.out.print("\nAfter sorting: ");
-    print(input);
-    System.out.println();
+    System.out.printf("After sorting: %s \n", Arrays.toString(input));
   }
 
   //I sort the array using merge sort technique.
@@ -93,12 +92,6 @@ public class MergeSort {
       for (; i <= mid; i++, k++) {
         nums[k] = temp[i];
       }
-    }
-  }
-
-  private static void print(int[] nums) {
-    for (int n : nums) {
-      System.out.printf("%d ", n);
     }
   }
 }

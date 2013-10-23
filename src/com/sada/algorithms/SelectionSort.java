@@ -23,6 +23,8 @@
  */
 package com.sada.algorithms;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Sada Kurapati <sadakurapati@gmail.com>
@@ -32,11 +34,9 @@ public class SelectionSort {
   public static void main(String args[]) {
     int input[];
     input = new int[]{55, 32, 8, 44, 23, 64, 25, 24, 63};
-    System.out.print("Before sorting: ");
-    print(input);
+    System.out.printf("Before sorting: %s \n", Arrays.toString(input));
     sort(input);
-    System.out.print("After sorting: ");
-    print(input);
+    System.out.printf("After sorting: %s \n", Arrays.toString(input));
   }
 
   //Selection sorting method.
@@ -54,13 +54,5 @@ public class SelectionSort {
         nums[smallElementAt] = temp;
       }
     }
-  }
-
-  //to pring elemtns in array.
-  private static void print(int[] nums) {
-    for (int n : nums) {
-      System.out.printf("%d ", n);
-    }
-    System.out.println("");
   }
 }

@@ -23,6 +23,8 @@
  */
 package com.sada.algorithms;
 
+import java.util.Arrays;
+
 /*
  * You are given an array of 1's 2's and 3's. Sort this list so the 1's are first, 
  * the 2's come second, and the 3's come third. 
@@ -40,12 +42,9 @@ public class DutchNationalFlagProblem {
 
   public static void main(String args[]) {
     int intArray[] = {2, 1, 3, 2, 2, 3, 2, 1};
-    System.out.print("Before:");
-    print(intArray);
+    System.out.printf("Before: %s \n", Arrays.toString(intArray));
     solve(intArray, 1, 3);
-    System.out.print("After:");
-    print(intArray);
-
+    System.out.printf("After: %s \n", Arrays.toString(intArray));
   }
 
   private static void solve(int nums[], int low, int high) {
@@ -73,12 +72,5 @@ public class DutchNationalFlagProblem {
     nums[left] = nums[right];
     nums[right] = temp;
 
-  }
-
-  private static void print(int nums[]) {
-    for (int i : nums) {
-      System.out.printf("%d ", i);
-    }
-    System.out.println();
   }
 }

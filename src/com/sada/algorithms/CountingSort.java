@@ -23,6 +23,7 @@
  */
 package com.sada.algorithms;
 
+import java.util.Arrays;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
@@ -34,12 +35,9 @@ public class CountingSort {
 
   public static void main(String args[]) {
     int input[] = new int[]{6, 0, 2, 1, 2, 3, 5, 6, 4, 8, 1, 2, 3};
-    System.out.print("Before sorting: ");
-    print(input);
+    System.out.printf("Before sorting: %s \n", Arrays.toString(input));
     int result[] = sort(input);
-    System.out.print("\nAfter sorting: ");
-    print(result);
-    System.out.println();
+    System.out.printf("After sorting: %s \n", Arrays.toString(result));
   }
 
   private static int[] sort(int nums[]) {
@@ -67,11 +65,5 @@ public class CountingSort {
       countsMap.put(nums[i], position);
     }
     return result;
-  }
-
-  private static void print(int[] nums) {
-    for (int n : nums) {
-      System.out.printf("%d ", n);
-    }
   }
 }

@@ -23,6 +23,8 @@
  */
 package com.sada.algorithms;
 
+import java.util.Arrays;
+
 /**
  * @author @author Sada Kurapati <sadakurapati@gmail.com>
  */
@@ -31,12 +33,9 @@ public class HeapSort {
   public static void main(String args[]) {
     int input[];
     input = new int[]{6, 3, 2, 5, 7, 4, 8, 1};
-    System.out.print("Before sorting: ");
-    print(input);
+    System.out.printf("Before sorting: %s \n", Arrays.toString(input));
     sort(input);
-    System.out.print("\nAfter sorting: ");
-    print(input);
-    System.out.println();
+    System.out.printf("After sorting: %s \n", Arrays.toString(input));
   }
 
   public static void sort(int nums[]) {
@@ -88,11 +87,5 @@ public class HeapSort {
     int temp = nums[i];
     nums[i] = nums[j];
     nums[j] = temp;
-  }
-
-  private static void print(int[] nums) {
-    for (int n : nums) {
-      System.out.printf("%d ", n);
-    }
   }
 }
