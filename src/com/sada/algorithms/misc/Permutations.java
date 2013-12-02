@@ -21,59 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.sada.algorithms.misc;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+package com.sada.algorithms.misc;
 
 /**
  *
  * @author Sada Kurapati <sadakurapati@gmail.com>
  */
-public class PowerSet {
-
-  public static void main(String args[]) {
-    String input[] = new String[]{"1", "2", "3"};
-    Collection<Set<String>> colSet = calculateSubsets(input);
-
-    //printing
-    for (Set<String> s : colSet) {
-      System.out.println(toString(s));
-    }
-
+public class Permutations {
+  
+  public static void main(String[] args){
+    String input = "BDCA";
+    printPurmutations(input.toCharArray(), new StringBuilder(), new boolean[input.length()], 0);
   }
-
-  private static String toString(Set<String> s) {
-    StringBuffer sb = new StringBuffer("{");
-    for (String v : s) {
-      sb.append(v);
-      sb.append(" ");
-    }
-    sb.append("}");
-    return sb.toString();
-  }
-
-  private static Collection<Set<String>> calculateSubsets(String[] values) {
-    int num = values.length;
-    int max = 1 << num;
-    Collection<Set<String>> subsets = new ArrayList<Set<String>>(max);
-
-    for (int subset = 1; subset < max; ++subset) {
-      subsets.add(calculateSubset(subset, values, num));
-    }
-    return subsets;
-  }
-
-  private static Set<String> calculateSubset(int subset, String x[], int num) {
-    Set<String> set = new HashSet<String>();
-
-    for (int j = 0; j < num; ++j) {
-      if (((subset >> j) & 1) == 1) {
-        set.add(x[j]);
+  
+  public static void printPurmutations(char[] input, StringBuilder sb, boolean[] state, int at){
+    //base case
+    if(at == input.length){
+      System.out.println(sb);
+    }else{
+      for(int i=0; i< input.length; i++){
+        if(!state[i]){
+          sb.append(input[i]);
+          state[i] = true;
+          printPurmutations(input, sb, state, at + 1);
+          //back track
+          state[i] = false;
+          sb.setLength(sb.length() -1);
+        }
       }
     }
-    return set;
   }
 }

@@ -44,9 +44,12 @@ public class MaxSubArray {
      * sbArray.print();
      *
      */
-    int[] intArr = {-3, -2, 4, 1, -5};
-    int maxSum = maxWithoutAdjcentElementsDP(intArr);
-    System.out.printf("Max sum is %d.\n", maxSum);
+    //int[] intArr = {-3, -2, 4, 1, -5};
+    //int maxSum = maxWithoutAdjcentElementsDP(intArr);
+    //System.out.printf("Max sum is %d.\n", maxSum);
+    int[] intArr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    MaxSubArray maxSubArray = new MaxSubArray(); 
+    SubArray sbArray = maxSubArray.byKadane(intArr); sbArray.print(); 
   }
 
   /**
@@ -57,28 +60,28 @@ public class MaxSubArray {
    */
   public SubArray byKadane(int nums[]) {
 
-    int start = 0, end = 0, tempStart = 0;
-    int maxSoFar = nums[0], maxEndingHere = nums[0];
+    int finalStart = 0, finalEnd = 0, tempStart = 0;
+    int finalMax = nums[0], tempMax = nums[0];
 
     for (int i = 1; i < nums.length; i++) {
 
-      if (maxEndingHere < 0) {
+      if (tempMax < 0) {
         //Reset the max sub array to start from here.
-        maxEndingHere = nums[i];
+        tempMax = nums[i];
         tempStart = i;
       } else {
-        maxEndingHere += nums[i];
+        tempMax += nums[i];
       }
 
       //change it to maxSoFar if the maxEndingHere is maximum.
-      if (maxEndingHere > maxSoFar) {
-        maxSoFar = maxEndingHere;
-        start = tempStart;
-        end = i;
+      if (tempMax > finalMax) {
+        finalMax = tempMax;
+        finalStart = tempStart;
+        finalEnd = i;
       }
 
     }
-    return new SubArray(start, end, maxSoFar);
+    return new SubArray(finalStart, finalEnd, finalMax);
   }
 
   /**

@@ -29,6 +29,10 @@ import java.util.List;
 
 /**
  * I find sub arrays where the sum of its elements is zero.
+ * 1. iterate through the array once, and take the sum from 0 to every other index of the array. 
+ * 2. If any sum is zero, the subarray from 0 to that index is the first such subarray. 
+ * else 
+ * 3. In the sum, if any two numbers are same, then the subarray between those two index is the first such subarray to have a sum zero. 
  *
  * @author Sada Kurapati <sadakurapati@gmail.com>
  */
@@ -48,6 +52,7 @@ public class ZeroSumSubArray {
 
   public List<SubArrayIndexes> findZeroSumSubArrays(int nums[]) {
     //Store the sum of elements. It stored sum as key and the position list as value.
+    //Sum to ith position
     HashMap<Integer, List<Integer>> sumMap = new HashMap<Integer, List<Integer>>();
     //List to store the zero sub array indexes - our result ;)
     List<SubArrayIndexes> sbArraysList = new ArrayList<SubArrayIndexes>(1);
