@@ -30,15 +30,41 @@ package com.sada.algorithms.dp;
 public class CutTheRod {
 
   public static void main(String[] args) {
+      int[] price = {1, 5, 8, 9, 10, 17, 17, 20, 24, 30};
+      int n = 10;
+      int[] priceSum = new int[n + 1];
+      System.out.printf("byTopDownDP = %d \n", byTopDownDP(price, n, priceSum));
+      System.out.printf("byBottonUpDP = %d", byBottonUpDP(price, n));
   }
 
-  private static int byTopDownDP(int price[], int n, int priceSum[]) {
+    private static int byBottonUpDP(int[] price, int n){
+        int[] priceSum = new int[n+1];
+        for(int i=1; i<=n; i++){
+            int totalPrice = Integer.MIN_VALUE;
+            for(int j = 1; j <= i; j++){
+                totalPrice = Math.max(totalPrice, price[j-1] + priceSum[i-j]);
+            }
+            priceSum[i] = totalPrice;
+        }
+        return priceSum[n];
+    }
+
+  private static int byTopDownDP(int[] price, int n, int[] priceSum) {
 
     //If already calculated the price, then return.
-    if (priceSum[n] >= 0) {
+    if (priceSum[n] > 0) {
       return priceSum[n];
     }
-    //TODO
-    return 0;
+      //base case
+      if(n == 0){
+          return 0;
+      }else{
+          int totalPrice = Integer.MIN_VALUE;
+          for(int i=1; i<= n; i++){
+              totalPrice = Math.max(totalPrice, price[i - 1] + byTopDownDP(price, n - i, priceSum));
+          }
+          priceSum[n] = totalPrice;
+          return totalPrice;
+      }
   }
 }
